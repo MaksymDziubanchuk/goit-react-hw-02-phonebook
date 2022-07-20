@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import css from 'components/Filter/Filter.module.css';
 
 const inputFilterId = nanoid();
@@ -19,4 +20,7 @@ export const Filter = ({ filter, handleFilterChange }) => {
       />
     </label>
   );
+};
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
 };
