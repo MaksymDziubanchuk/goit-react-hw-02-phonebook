@@ -8,12 +8,9 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  handleNameChange = e => {
-    this.setState({ name: e.target.value });
-  };
-
-  handleNumberChange = e => {
-    this.setState({ number: e.target.value });
+  handleChange = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
@@ -43,7 +40,7 @@ export class ContactForm extends Component {
             className={css.input}
             id={inputNameId}
             value={name}
-            onChange={this.handleNameChange}
+            onChange={this.handleChange}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -57,7 +54,7 @@ export class ContactForm extends Component {
             className={css.input}
             id={inputNumberId}
             value={number}
-            onChange={this.handleNumberChange}
+            onChange={this.handleChange}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

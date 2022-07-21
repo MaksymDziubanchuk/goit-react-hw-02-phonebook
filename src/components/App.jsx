@@ -18,17 +18,20 @@ export class App extends Component {
 
   addContact = (name, number) => {
     const { contacts } = this.state;
-    for (let contact of contacts) {
-      if (contact.name.toLowerCase() === name.toLowerCase()) {
-        alert(`${name} is already in contacts.`);
-        return;
-      }
-    }
+    const isInclude = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
     const contact = {
       id: nanoid(),
       name,
       number,
     };
+
+    if (isInclude) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
